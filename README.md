@@ -22,3 +22,5 @@ We use the `defaults` option in our `job` definition to define the common `worki
 
 
 Good Night :)
+
+Added this line to check pull request event trigger
