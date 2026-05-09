@@ -32,5 +32,3 @@ jobs:
       - name: I will execute when cancelled
         if: ${{cancelled()}}
         run: echo "Will execute only if the WF has been cancelled."
-        
-
