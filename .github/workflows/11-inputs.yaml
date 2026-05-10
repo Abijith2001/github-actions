@@ -16,9 +16,7 @@ on:
           - v1
           - v2
           - v3
-        default:
-          - v3
-          - v2
+        default: v3
 jobs:
   build:
     runs-on: ubuntu-latest
