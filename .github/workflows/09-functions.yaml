@@ -9,9 +9,14 @@ jobs:
       - name: Print PR title
         run: echo "${{github.event.pull_request.title}}"
       - name: Print PR labels
-        run: echo "${{toJson(github.event.pull_request.labels)}}"
+        run: |
+              cat << EOF
+              ${{ toJson(github.event.pull_request.labels) }}
+              EOF
+              echo "${{github.event.pull_request.title}}"
+              exit 1
       - name: Bug step
-        if: ${{(failed() && !cancelled()) && contains(github.event.pull_request.title,"fix")}}
+        if: ${{(failure() && !cancelled()) && contains(github.event.pull_request.title,'fix')}}
         run: echo "I am a bug fix"
       - name: Sleep for 20 seconds
         run: sleep 20
@@ -29,4 +34,5 @@ jobs:
       - name: I will execute when cancelled
         if: ${{cancelled()}}
         run: echo "Will execute only if the WF has been cancelled."
-        
+
+
