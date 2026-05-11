@@ -66,7 +66,7 @@ jobs:
         id: cache-key
         run: echo "CACHE_KEY=deps-node-modules-${{ hashFiles('package-lock.json') }}" >> $GITHUB_OUTPUT
       - name: print cache-key
-        run: echo "${{steps.cache-key.outputs.cache-key}}"
+        run: echo "${{steps.cache-key.outputs.CACHE_KEY}}"
       - name: Download cached dependencies
         uses: actions/cache@v3
         if: ${{inputs.use-cache}}
