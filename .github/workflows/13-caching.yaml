@@ -21,7 +21,7 @@ jobs:
       run:
         working-directory: react-app
     steps:
-      - run: pwd
+      #- run: pwd
       - name: Checkout code
         uses: actions/checkout@v6
       - run: pwd
