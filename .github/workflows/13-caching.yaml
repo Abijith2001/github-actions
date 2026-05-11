@@ -19,23 +19,23 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: github-actions/react-app
+        working-directory: react-app
     steps:
       #- run: pwd
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
       - run: pwd
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: ${{inputs.node-version}}
       - name: Download cached dependencies
         id: cache
         if: ${{inputs.use-cache}}
-        uses: actions/cache@v5
+        uses: actions/cache@v3
         with:
-          key: deps-node-modules-${{hashFiles('github-actions/react-app/package-lock.json')}}
-          path: github-actions/react-app/node_modules
+          key: deps-node-modules-${{hashFiles('react-app/package-lock.json')}}
+          path: react-app/node_modules
       - name: Install dependencies
         if: ${{steps.cache.outputs.cache-hit == 'false'}}
         run: npm ci
