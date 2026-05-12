@@ -37,7 +37,9 @@ jobs:
     needs: test-build
     steps:
       - name: PWD
-        run: pwd
+        run: |
+              pwd
+              ls -R
       - name: Download build files
         uses: actions/download-artifact@v4
         with:
