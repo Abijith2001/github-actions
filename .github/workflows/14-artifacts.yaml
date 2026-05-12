@@ -1,5 +1,8 @@
 name: 14 - Working with Artifacts
 run-name: 14 - Working with Artifacts run-name
+env:
+  build-artifact-key: app-${{ github.sha }}
+  test-coverage-key: test-coverage-${{ github.sha }}
 on:
   workflow_dispatch:
 jobs:
@@ -25,7 +28,12 @@ jobs:
         if: ${{ steps.cache.outputs.cache-hit == 'false' || steps.cache.outputs.cache-hit == ''}}
         run: npm ci
       - name: Unit tests
-        run: npm run test
+        run: npm run test -- --coverage
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.test-coverage-key }}
+          path: ./react-app/coverage
       - name: Build code
         run: npm run build
       - name: Upload build files
