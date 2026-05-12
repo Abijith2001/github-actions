@@ -58,6 +58,8 @@ jobs:
             opacity: 100
           - color: red
             shape: triangle
+        exclude:
+          - opacity: 75
     steps:
       - name: Dummy
         run: echo "${{ matrix.opacity }}-${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}"
