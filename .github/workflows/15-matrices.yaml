@@ -1,9 +1,9 @@
 name: 15 - Working with Matrices
 on:
-  workflow-dispatch:
+  workflow_dispatch
 jobs:
   backwards-compatibility:
-    name: ${{ matrix.os-matrix.version }}
+    name: ${{ matrix.os }}-${{ matrix.node }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
