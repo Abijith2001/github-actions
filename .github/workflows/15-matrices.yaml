@@ -37,7 +37,7 @@ jobs:
       - name: Upload test results
         run: echo "Uploading test results"
   include-example:
-    name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}
+    name: ${{ matrix.opacity }}-${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -51,9 +51,10 @@ jobs:
           -  small
           -  large
         include:
-          - color: red
+          - opacity: 50
+            color: red
             shape: triangle
     steps:
       - name: Dummy
-        run: echo "${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}"
+        run: echo "${{ matrix.opacity }}-${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}"
             
